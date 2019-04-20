@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+}
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: turquoise;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+.bg {
+    /* The image used */
+    background-image: url('http://aquascope.net/wp-content/uploads/2016/07/Aquarium-Background.jpg');
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#fishTank {
+	position: absolute;
+	border: 1px #000000 solid;
+	width: 1280px;
+	height: 806px;
+	background-image: url('http://aquascope.net/wp-content/uploads/2016/07/Aquarium-Background.jpg');
+	overflow: hidden;
+}
+	/*Declare Fish*/
+#clownfish {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-image: url('clownfish_cartoon.png');
+}
+#blueTang {
+  height: 25%;
+  position: absolute;
+  background-image: url('blue tang cartoon.png');
+}
+#angelfish {
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  background-color: black;
+}
+</style>
+	<!-- <script type="text/javascript" src="Script.js"></script> -->
+<script>
+	// declare variables
+let fishArray = [];
+let fishValue;
+	
+function addFish(fishValue) {
+	/* 
+	This function adds fish to an array 
+	It should be run when the user pushes the add button
+	Fish value is the corresponding user input
+	*/
+fishArray.push(fishValue); // This adds the user input to the array
+	document.getElementById('fishnames').innerHTML = fishArray;
+	// Not sure what this does ^
+	// I think it displays the array for debugging purposes
+fishTally(); // After adding fish, we update the tally.
+	// Is the tally necessary or is it just for debugging?
+}
+// Tally the Fish
+function fishTally() {
+	//
+	let cf = 0; // Clownfish
+	let af = 0; // Angelfish
+ 	let bt = 0; // Blue Tang
+	let cthulu = 0; // Cthulu
+	let error = 0; // If 
+	for (i = 0; i<fishArray.length; i++){
+		if (fishArray[i] == 'clownfish') {
+		cf++;
+		} else if (fishArray[i] == 'angelfish') {
+		af++;
+		} else if (fishArray[i] == 'blueTang') {
+		bt++;
+		} else {
+			error++;
+		}
+	}
+document.getElementById('fishcount').innerHTML = "Count"+"<br>"+
+	"clownfish: "+cf+"<br>"+
+	"angelfish: "+af+"<br>"+
+	"Blue Tang: " + bt + "<br>" +
+	"Error: "+error+"<br>"+
+	"TOTAL: "+fishArray.length;
+	// The above function pushes that text to a div id called fishcount
+	// Probably just for debugging
+}
+/* This function is disabled currently
+function happyFish() {
+	var warnings =[];
+	/* fish needs
+	clownfish <3 anemone
+	*/
+	/* Problems
+	// Cthulu, the Great Old One can't be with any other fish
+	// Clownfish and anemone
+	if (cf > 0 && an == 0) {
+		warnings.push("Clownfish needs an anemone!");
+	}
+	if (cthulu > 1) {
+		warnings.push("Cthulu, the Great Old One can't be with any other fish");
+	}
+
+} */
+// show fish
+function placeFish() {
+	let fishHomes = [];
+	// I think fishHomes are div ids where fish are
+	for (i=0; i < fishArray.length; i++){
+		var fishhome = "<div id = 'fishFrame"+i+"'></div>"; 
+		// what is fishframe
+		fishHomes.push(fishhome);
+	}
+	document.getElementById('fishes').innerHTML = fishHomes;
+	for (i=0; i<fishArray.length; i++){
+		var posy = Math.random()*400+165;
+		var posx = Math.random()*100+165;
+		// var fishHome = "<div id = 'fish"+i+"'></div>";
+		var currFish = ("<p id='"+fishArray[i]+"' style='top: "+posy+"px; left: "+posx+"px';></p>");
+		
+		// document.getElementById('fishes').innerHTML = fishHome;
+		document.getElementById('fishFrame'+i).innerHTML = currFish;
+		alert(currFish.toString());
+		alert(fishArray[i].toString());
+	}
+	alert(fishHomes.toString());
+}
+function clearTank() {
+	// This empties the arrays and then refreshes the div ids
+fishArray = [];
+fishHomes = [];
+document.getElementById('fishnames').innerHTML = fishArray;
+document.getElementById('fishcount').innerHTML = "Fish Count: " + fishArray.length ;
+placeFish();
+}
+	</script>
+</head>
+<body>
+<div class = "sidebar">
+		<h2>Add Fish!</h2>
+		<p>
+			<button onclick="addFish('clownfish')"><img src="clownfish_cartoon.png" width="90%"><br>Clownfish</button><br>
+			<button onclick="addFish('angelfish')"><img src="Angelfish_cut.png" width="90%">Angelfish!</button><br>
+			<button onclick="addFish('blueTang')"><img src="blue tang cartoon.png" width="90%">Blue Tang!</button><br>
+		</p>
+		<p>
+			<button onclick="placeFish()">Build!</button>
+		</p>
+		<p><button onclick="clearTank()">Clear Tank!</button></p>
+		<p id ="fishnames"></p>
+		<p id ="fishcount"></p>
+</div>
+<div class = "bg">
+<p id = "fishes"></p>
+	</div>
+</body>
+</html>
