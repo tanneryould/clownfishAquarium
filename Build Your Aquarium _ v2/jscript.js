@@ -142,6 +142,99 @@ function reset () {
 	document.getElementById('swimmingFish').innerHTML = placedFish;
 	placeFishInTank();
 }
-function checkFishCompatibility() {
-	
+function checkFishCompatibility(inputFish) {
+	let returnString = '';
+	if (inputFish = 'blueGreenChromis') {
+		for (i = 0; i < fishArray.length; i++) {
+			switch (fishArray[i]) {
+				case 'dogFacedPufferfish':
+					returnString = returnString+`\nCAUTION: ${inputFish} 
+					can coexist with ${fishArray[i]} only under certain conditions`;
+					break;
+				case 'lionfish':
+				case 'seaHorse':
+				case 'eel':
+				case 'nigerTrigger':
+				case 'clownTriggerfish':
+					returnString = returnString+`\n${inputFish} cannot coexist with ${fishArray[i]}`;
+					break;
+				case 'yellowtailDamselfish':
+				case 'blueDamselfish':
+				case 'dominoDamsel':
+				case 'humbugDamselfish':
+				case 'fourStripeDamselfish':
+				case 'azureDamselfish':
+					returnString = returnString+`\nDamselfish typically do not like other species of damselfish`;
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	if (inputFish = 'yellowtailDamselfish') {
+		for (i = 0; i < fishArray.length; i++) {
+			switch (fishArray[i]) {
+				case 'dogFacedPufferfish':
+				case 'ocellarisClownfish':
+				case 'banggaiCardinalFish':
+				case 'pajamaCardinalfish':
+				case 'crab':
+				case 'shrimp':
+				case 'snail': 
+					returnString = returnString+`\nCAUTION: ${inputFish} 
+					can coexist with ${fishArray[i]} only under certain conditions`;
+					break;
+				case 'clownTriggerfish':
+				case 'eel':
+				case 'lionfish':
+				case 'nigerTrigger':
+				case 'seaHorse':
+					returnString = returnString+`\n${inputFish} cannot coexist with ${fishArray[i]}`;
+					break;
+				case 'azureDamselfish':
+				case 'blueDamselfish':
+				case 'blueGreenChromis':
+				case 'dominoDamsel':
+				case 'fourStripeDamselfish':
+				case 'humbugDamselfish':
+					returnString = returnString+`\nDamselfish typically do not like other species of damselfish`;
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	if (inputFish = 'yellowtailDamselfish') {
+		for (i = 0; i < fishArray.length; i++) {
+			switch (fishArray[i]) {
+				case 'dogFacedPufferfish':
+				case 'ocellarisClownfish':
+				case 'banggaiCardinalFish':
+				case 'pajamaCardinalfish':
+				case 'crab':
+				case 'shrimp':
+				case 'snail': 
+					returnString = returnString+`\nCAUTION: ${inputFish} 
+					can coexist with ${fishArray[i]} only under certain conditions`;
+					break;
+				case 'clownTriggerfish':
+				case 'eel':
+				case 'lionfish':
+				case 'nigerTrigger':
+				case 'seaHorse':
+					returnString = returnString+`\n${inputFish} cannot coexist with ${fishArray[i]}`;
+					break;
+				case 'azureDamselfish':
+				case 'blueDamselfish':
+				case 'blueGreenChromis':
+				case 'dominoDamsel':
+				case 'fourStripeDamselfish':
+				case 'humbugDamselfish':
+					returnString = returnString+`\nDamselfish typically do not like other species of damselfish`;
+					break;
+				default:
+					break;
+			}
+		}
+	}
 }
