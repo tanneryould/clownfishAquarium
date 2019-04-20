@@ -170,7 +170,8 @@ function checkFishCompatibility(inputFish) {
 					break;
 			}
 		}
-	} else if (inputFish === 'yellowtailDamselfish') {
+	} 
+	else if (inputFish === 'yellowtailDamselfish') {
 		for (i = 0; i < fishArray.length; i++) {
 			switch (fishArray[i]) {
 				case 'dogFacedPufferfish':
@@ -732,7 +733,7 @@ function checkFishCompatibility(inputFish) {
 				case 'dogFacedPufferfish':
 				case 'eel':
 				case 'flameAngelfish':
-				case 'lionfish'
+				case 'lionfish':
 				case 'nigerTrigger':
 					returnString = returnString+`\nCAUTION: ${inputFish} 
 					can coexist with ${fishArray[i]} only under certain conditions`;
