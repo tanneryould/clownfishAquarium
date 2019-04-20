@@ -11,6 +11,39 @@ let tankWidth = window.innerWidth;
 let tankHeight = window.innerHeight;
 let stop = false;
 let swimSpeed = 10;
+const fishList = [
+	'anemone',
+	'azureDamselfish',
+	'banggaiCardinalFish',
+	'blueDamselfish',
+	'blueGreenChromis',
+	'blueTang',
+	'bluebandGoby',
+	'bluestreakCleanerWrasse',
+	'clownTriggerfish',
+	'coralBeautyAngelfish',
+	'coral',
+	'crab',
+	'snail',
+	'dogFacedPufferfish',
+	'dominoDamsel',
+	'eel',
+	'fireGoby',
+	'flameAngelfish',
+	'fourStripeDamselfish',
+	'humbugDamselfish',
+	'jewelledBlenny',
+	'lionfish',
+	'mandarinfish',
+	'nigerTrigger',
+	'ocellarisClownfish',
+	'pajamalCarinalfish',
+	'seaHorse',
+	'sixlineWrasse',
+	'watchmanGoby',
+	'yellowtailDamselfish'
+];
+console.log(fishList);
 // Functions
 function addToFishArray(newFish) {
 	fishArray.push(newFish);
@@ -109,6 +142,6 @@ function reset () {
 	document.getElementById('swimmingFish').innerHTML = placedFish;
 	placeFishInTank();
 }
-function checkFishCompatibility {
+function checkFishCompatibility() {
 	
 }
