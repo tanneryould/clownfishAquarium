@@ -12,14 +12,16 @@ body, html {
   left: 0;
   background-color: turquoise;
   overflow-x: hidden;
-  padding-top: 16px;
+	padding-top: 16px;
+	text-align: center;
 }
 .bg {
     /* The image used */
     background-image: url('plant.jpg');
 
     /* Full height */
-    height: 100%; 
+		height: 100%;
+		width: 100%;
 
     /* Center and scale the image nicely */
     background-position: center;
@@ -45,8 +47,8 @@ body, html {
 	-webkit-transform: scaleX(-1);
 	transform: scaleX(-1);
 }
-#clownfish {
-	background-image: url('clownfish_small.png');
+#ocellarisClownfish {
+	background-image: url('ocellarisClownfish_small.png');
 }
 #blueTang {	
 	background-image: url('blueTang_small.png');
@@ -56,3 +58,32 @@ body, html {
 #angelfish {
 	background-image: url('angelfish_small.png');
 }
+#anemone {background-color:blue;}
+#azureDamselfish {background-color:blue;}
+#banggaiCardinalFish {background-color:blue;}
+#blueDamselfish {background-color:blue;}
+#blueGreenChromis {background-color:blue;}
+#blueTang {background-color:blue;}
+#bluebandGoby {background-color:blue;}
+#bluestreakCleanerWrasse {background-color:blue;}
+#clownTriggerfish {background-color:blue;}
+#coralBeautyAngelfish {background-color:blue;}
+#coral {background-color:blue;}
+#crab {background-color:blue;}
+#snail {background-color:blue;}
+#dogFacedPufferfish {background-color:blue;}
+#dominoDamsel {background-color:blue;}
+#eel {background-color:blue;}
+#fireGoby {background-color:blue;}
+#flameAngelfish {background-color:blue;}
+#fourStripeDamselfish {background-color:blue;}
+#humbugDamselfish {background-color:blue;}
+#jewelledBlenny {background-color:blue;}
+#lionfish {background-color:blue;}
+#mandarinfish {background-color:blue;}
+#nigerTrigger {background-color:blue;}
+#pajamaCardinalfish {background-color:blue;}
+#seaHorse {background-color:blue;}
+#sixlineWrasse {background-color:blue;}
+#watchmanGoby {background-color:blue;}
+#yellowtailDamselfish {background-color:blue;}
