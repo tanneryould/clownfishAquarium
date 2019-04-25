@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="gr__codecouch_com"><head>
+	<meta name="author" content="Dan Nye">
+	<meta name="description" content="Ozone Asylum - 20 Line JavaScript Competition - February 2005 - http://www.ozoneasylum.com/">
+	<meta name="keywords" content="ozone, asylum, 20, line, javascript, competition, billyraypreachersson, dan, nye, coedit, co, edit, co:edit">
+	<meta name="copyright" content="Copyright � 2004 - Dan Nye">
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="content-language" content="en">
+	<title>JavaScript Aquarium</title>
+	<style type="text/css">
+		body {
+			overflow: hidden;
+		}
+		#fishTank {
+			position: absolute;
+			border: 1px #000000 solid;
+			width: 600px;
+			height: 480px;
+			left: 20px;
+			top: 20px;
+			background-image: url(https://highfieldtales.files.wordpress.com/2014/12/fish_tank_2.jpg);
+			overflow: hidden;
+		}
+		img {
+			position: absolute;
+		}
+	</style>
+
+	<script type="text/javascript">
+	<!--
+		/* .. */	function Fish(ownName) {
+		/* .1 */		this.fishType = Math.round(Math.random() * 7) + 1;					// choose fish type (1-8)
+		/* .2 */		this.positionX = Math.round(Math.random() * 530);						// choose random start X co-ordinate
+		/* .3 */		this.positionY = Math.round(Math.random() * 425);						// choose random start Y co-ordinate
+		/* .4 */		while (!(this.directionX = Math.round(Math.random() * 2) - 1));			// choose random X direction (left or right)
+		/* .5 */		while (!(this.directionY = Math.round(Math.random() * 2) - 1));			// choose random Y direction (up or down)
+		/* .. */
+		/* .6 */		document.getElementById('fishTank').appendChild(this.canvas = document.createElement('img'));
+		/* .7 */		this.canvas.style.left = this.positionX + 'px';
+		/* .8 */		this.canvas.style.top = this.positionY + 'px';
+		/* .9 */		setInterval('window[\'' + ownName + '\'].animate();', (Math.round(Math.random() * 4) + 3) * 10);		// choose random speed (20, 30, 40, 50, 60)
+		/* .. */	}
+		/* 10 */	Fish.prototype.animate = FishAnimate;
+
+		/* .. */	function FishAnimate() {
+		/* 11 */		if ((newImageName = 'fish' + this.fishType + (this.directionX > 0 ? '_flipped' : '') + '.gif') != this.canvas.src.substr(this.canvas.src.lastIndexOf('/') + 1)) this.canvas.src = newImageName;
+		/* 12 */		xPos = parseInt(this.canvas.style.left, 10) + this.directionX;
+		/* 13 */		yPos = parseInt(this.canvas.style.top, 10) + this.directionY;
+		/* 14 */		if (xPos > 610 || Math.round(Math.random() * 200) > 199) this.directionX = 0-(Math.round(Math.random()) + 1);
+		/* 15 */		if (xPos < -75 || Math.round(Math.random() * 200) > 199) this.directionX = Math.round(Math.random()) + 1;
+		/* 16 */		if (yPos > 390 || Math.round(Math.random() * 200) > 199) this.directionY = -1;
+		/* 17 */		if (yPos < 10 || Math.round(Math.random() * 200) > 199) this.directionY = 1;
+		/* 18 */		this.canvas.style.left = xPos + 'px';
+		/* 19 */		this.canvas.style.top = yPos + 'px';
+		/* .. */	}
+var bclicks = 0
+		/* .. */	function createFish() {
+		/* .. */		// The loop count below changes the number of fish
+						bclicks++;
+		/* 20 */		 for (var loop=0; loop<bclicks; loop++) window['fish' + loop] = new Fish('fish' + loop);
+		/* .. */	}
+	//-->
+	</script>
+</head>
+
+<body onload="createFish();" data-gr-c-s-loaded="true">
+	<div id="fishTank"></div>
+	<button onclick="createFish()">Add a Fish!</button>
+
+
+
+</body></html>
