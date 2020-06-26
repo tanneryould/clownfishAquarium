@@ -8,6 +8,43 @@ let tankCenter = swimmingWidth/2;
 let tankHeight = window.innerHeight;
 let swimSpeed = 10; // The global speed at which all of the fish move.
 
+//Huge Table below, expand at your own risk!
+const fishList = [
+	['Anemones','Azure Damselfish','Banggai cardinal fish','Blue damselfish','Blue green chromis','blueTang','Blueband goby','Bluestreak cleaner wrasse',
+	'Clown Triggerfish','Coral Beauty Angelfish','Corals','Crabs, shrimp and snails','Dog faced pufferfish','Domino damsel','Eel','Fire goby','Flame angelfish',
+	'Four stripe damselfish','Humbug damselfish','Jewelled blenny','Lionfish','Mandarinfish','Niger Trigger','ocellarisClownfish','Pajama cardinalfish','Sea horses',
+	'Sixline wrasse','Watchman goby','Yellowtail damselfish'],
+	['Anemones','1','0','0','0','0','0','0','0','2','0','1','1','1','0','1','0','0','2','0','0','0','2','0','0','0','2','0','0','0'],	
+	['Azure Damselfish','0','0','1','2.1','2.1','0','0','0','2','0','0','1','1','2.1','2','0','0','2.1','2.1','0','2','0','2','1','1','2','0','0','2.1'],
+	['Banggai cardinal fish','0','0','0','0','0','0','0','1','2','0','0','0','1','0','2','0','0','0','0','0','2','0','2','0','0','2','1','0','0'],
+	['Blue damselfish','0','2.1','1','0','2.1','0','0','0','2','0','0','1','1','2.1','2','0','0','2.1','2.1','0','2','0','2','1','1','2','0','0','2.1'],
+	['Blue green chromis','0','2.1','0','2.1','0','0','0','0','2','0','0','0','1','2.1','2','0','0','2.1','2.1','0','2','0','2','0','0','2','0','0','2.1'],	
+	['blueTang','0','0','0','0','0','0','0','0','2','0','0','0','1','0','0','0','0','0','0','0','1','2','1','0','0','2','0','0','0'],
+	['Blueband goby','0','0','0','0','0','0','0','0','2','0','0','1','1','0','2','0','0','0','0','0','2','0','2','0','0','0','0','0','0'],
+	['Bluestreak cleaner wrasse','0','0','1','0','0','0','0','2','2','0','1','1','1','0','1','0','0','0','0','0','2','0','1','0','1','2','2','0','0'],
+	['Clown Triggerfish','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2'],
+	['Coral Beauty Angelfish','0','0','0','0','0','0','0','0','2','2','1','0','1','0','1','0','2','0','0','0','1','0','1','0','0','2','0','0','0'],
+	['Corals','1','0','0','0','0','0','0','0','2','1','1','1','2','0','2','0','1','2','0','0','1','0','2','0','0','2','0','0','0'],
+	['Crabs, shrimp and snails','1','1','0','1','0','0','1','1','2','1','1','1','1','1','1','1','0','1','1','0','1','0','1','0','0','2','1','1','1'],
+	['Dog faced pufferfish','1','1','1','1','2','1','1','1','2','1','2','2','1','1','1','1','1','1','1','1','1','2','1','1','1','2','1','1','1'],
+	['Domino damsel','0','2.1','1','2.1','2.1','0','0','0','2','0','0','1','1','0','2','0','0','2.1','2.1','0','2','2','2','1','1','2','0','0','2.1'],
+	['Eel','1','2','2','2','2','0','2','1','2','1','2','1','1','2','1','2','1','2','2','2','1','2','1','2','2','2','1','2','2'],
+	['Fire goby','0','0','0','0','0','0','0','0','2','0','0','2','1','0','2','4','0','0','0','0','2','0','2','0','0','0','0','0','0'],
+	['Flame angelfish','0','0','0','0','0','0','0','0','2','2','1','0','1','0','1','0','2','0','0','0','1','0','1','0','0','2','0','0','0'],
+	['Four stripe damselfish','0','2.1','1','2.1','2.1','0','0','0','2','0','0','1','1','2.1','2','0','0','0','2.1','0','2','2','2','1','1','2','0','0','2.1'],
+	['Humbug damselfish','0','2.1','1','2.1','2.1','0','0','0','2','0','0','1','1','2.1','2','0','0','2.1','0','0','2','2','2','1','1','2','0','0','2.1'],
+	['Jewelled blenny','0','0','0','0','0','0','0','0','2','0','0','0','1','0','2','0','0','0','0','0.1','2','0','2','0','0','2','0','0','0'],
+	['Lionfish','1','2','2','2','2','1','2','2','2','1','1','1','1','2','1','2','1','2','2','1','0','2','1','2','2','2','2','2','2'],
+	['Mandarinfish','2','0','0','0','0','2','0','0','2','0','0','0','2','2','2','0','0','2','2','0','2','0.1','2','0','0','0','0','0','0'],
+	['Niger Trigger','0','2','2','2','2','1','2','2','2','1','2','2','1','2','1','2','1','2','2','2','1','2','1','2','2','2','2','2','2'],
+	['ocellarisClownfish','0','1','0','1','0','0','0','0','2','0','0','0','1','1','2','0','0','1','1','0','2','0','2','1','0','2','0','0','1'],
+	['Pajama cardinalfish','0','1','0','0','0','0','0','1','2','0','0','0','1','0','2','0','0','1','0','0','2','0','2','0','0','2','0','0','0'],
+	['Sea horses','2','2','2','2','2','2','0','2','2','2','2','2','2','2','2','0','2','2','2','2','2','0','2','2','2','0','2','0','2'],
+	['Sixline wrasse','0','0','1','0','0','0','0','2','2','0','0','1','1','0','1','0','0','0','0','0','2','0','2','0','0','2','2','0','0'],
+	['Watchman goby','0','0','0','0','0','0','0','0','2','0','0','1','1','0','2','0','0','0','0','0','2','0','2','0','0','0','0','0','0'],
+	['Yellowtail damselfish','0','2.1','1','2.1','2.1','0','0','0','2','0','0','1','1','2.1','2','0','0','2.1','2.1','0','2','0','2','1','1','2','0','0','0']
+];
+
 // OK now functions
 // General Functions
 function removeValueAtIndex(index, list) {
@@ -78,10 +115,10 @@ function addFish(newFish) {
 		newFish, // species
 		(Math.random() * (tankWidth - 400) + 160), // posX
 		(Math.random() * (tankHeight - 200)), // posY
-		Math.floor(0.5 - Math.random()), // dirX
-		Math.floor(0.5 - Math.random()), // dirY
-		(Math.random() * Math.PI), // sin height
-		Math.random() * 10 // speed
+		0.4 + Math.random()*.5, // dirX
+		(0.4 + Math.random()*.5)/5, // dirY
+		(Math.random() * Math.PI),
+		10
 	)
 	fishArray.push(fishToAdd);
 }
@@ -137,5 +174,40 @@ function reset () {
 	dirY = [];
 	document.getElementById('swimmingFish').innerHTML = placedFish;
 }
+function checkFishCompatibility(inputFish) {
+	compatibilityReport = [];
+	let fishPosition = findValueIn2DArray(inputFish, fishList[0]);
+	let comparedFish;
+	for (n=0; n<fishArray.length; n++) {
+		comparedFish = findValueIn2DArray(fishArray[n], fishList[0]);
+		console.log(comparedFish);
+		console.log(fishPosition);
+		console.log(fishArray);
+		console.log(fishArray.length);
+		console.log('value of n is: '+n);
+		switch (fishList[comparedFish][fishPosition]) {
+			case '0':
+				break;
+			case '1':
+				compatibilityReport.push(`CAUTION: ${inputFish} can coexist with another ${fishArray[n]} only under certain conditions`);
+				break;
+			case '2':
+				compatibilityReport.push(`${inputFish} cannot coexist with ${fishArray[n]}`);
+				break;	
+			case '3':
+				compatibilityReport.push(`Damselfish (${inputFish})typically do not like other species of damselfish (${fishArray[n]})`);
+				break;
+			case '4':
+				compatibilityReport.push(`(${inputFish}) want to be in a mated pair. Please add another`);
+				break;
+			default:
+				console.log(`Unable to find inputFish (${inputFish}) and fishArray[i] (${fishArray[n]}) in table fishList
+				code returned: ${fishList[comparedFish][fishPosition]}`);
+				break;
+		}
+	}
+	return removeDuplicates(compatibilityReport);
+}
+
 //OK Start.
 animateFish();
