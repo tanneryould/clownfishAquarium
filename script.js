@@ -6,9 +6,11 @@ let tankWidth = window.innerWidth;
 let swimmingWidth = tankWidth - 160;
 let tankCenter = swimmingWidth/2;
 let tankHeight = window.innerHeight;
-let swimSpeed = 10; // The global speed at which all of the fish move.
+let swimSpeed = 10; 
+let placedFish = []// The global speed at which all of the fish move.
 // Dumb cheat for getting direction
 dir_array = [-1,1];
+
 
 fishList = ['ocellarisClownfish']
 
@@ -109,7 +111,7 @@ function writeFish () {
 }
 	document.getElementById('swimmingFish').innerHTML = placedFish;	
 }
-function moveFish () {
+function moveFish() {
 	for (i=0; i<fishArray.length; i++) {
 		if (fishArray[i].posX > tankWidth-100 || fishArray[i].posX < 160) {
 			fishArray[i].dirX *= -1;
@@ -123,8 +125,20 @@ function moveFish () {
 	}
 	writeFish();
 }
+function redefineFrame() {
+    tankWidth = window.innerWidth;
+  swimmingWidth = tankWidth - 160;
+  tankCenter = swimmingWidth/2;
+  tankHeight = window.innerHeight;
+}
+document.getElementById('swimmingFish').innerHTML = placedFish;
+
+function animate() {
+  redefineFrame();
+  moveFish();
+}
 function animateFish() {
-	setInterval(moveFish, swimSpeed);
+	setInterval(animate, swimSpeed);
 }
 function reset () {
 	fishArray = [];
@@ -133,7 +147,7 @@ function reset () {
 	coordY = [];
 	dirX = [];
 	dirY = [];
-	document.getElementById('swimmingFish').innerHTML = placedFish;
+  redefineFrame();
 }
 //OK Start.
 animateFish();
